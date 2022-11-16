@@ -4,7 +4,9 @@ from flask import Flask, jsonify, request
 # from werkzeug import secure_filename
 
 app = Flask(__name__)
-
+@app.route('/')
+def main():
+    return "hello world"
 
 @app.route('/upload', methods = ['POST'])
 def hello_world():
