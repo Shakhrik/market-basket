@@ -3,10 +3,11 @@ import json
 import pandas as pd
 from apyori import apriori
 
-marketdf = pd.read_csv("groceries_final.csv",header = None)
 
-def analyze():    
-    final_market_list = prune_dataset()
+def analyze():
+    marketdf = pd.read_csv("groceries_final.csv",header = None)
+    
+    final_market_list = prune_dataset(marketdf)
     final_item_df = final_market_list[0]
 
     final_market_df = final_market_list[1]
@@ -47,7 +48,7 @@ def analyze():
 
     return response
    
-def prune_dataset(input_df= marketdf,length_trans = 2,total_sales_perc = 0.40):
+def prune_dataset(input_df,length_trans = 2,total_sales_perc = 0.40):
     final_df2 = pd.DataFrame()
     for i in range(input_df.shape[0]):
         cnt = 0
