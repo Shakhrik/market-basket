@@ -1,10 +1,13 @@
-from analysis import analyze
 from flask import Flask, jsonify, request
+from flask_cors import CORS
+
+from analysis import analyze
 
 # from werkzeug import secure_filename
 
 app = Flask(__name__)
-@app.route('/')
+CORS(app)
+@app.route('/', methods = ["GET"])
 def main():
     return "hello world"
 
@@ -20,4 +23,4 @@ def upload_file():
     return f.filename
   
 if __name__ == '__main__':
-   app.run(port=80)
+   app.run()
